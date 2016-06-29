@@ -29,6 +29,7 @@ public class NationalityController {
 		model.addAttribute("nationality", new Nationality());
 		model.addAttribute("listNationalities",
 				this.nationalityService.listNationalities());
+
 		return "nationalities";
 	}
 

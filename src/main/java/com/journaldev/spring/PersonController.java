@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.journaldev.spring.model.Person;
+import com.journaldev.spring.service.NationalityService;
 import com.journaldev.spring.service.PersonService;
 
 //test
@@ -17,6 +18,7 @@ import com.journaldev.spring.service.PersonService;
 public class PersonController {
 
 	private PersonService personService;
+	private NationalityService nationalityService;
 
 	@Autowired(required = true)
 	@Qualifier(value = "personService")
@@ -24,16 +26,25 @@ public class PersonController {
 		this.personService = ps;
 	}
 
+	@Autowired(required = true)
+	@Qualifier(value = "nationalityService")
+	public void setNationalityService(NationalityService ps) {
+		this.nationalityService = ps;
+	}
+
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
 	public String listPersons(Model model) {
 		model.addAttribute("person", new Person());
 		model.addAttribute("listPersons", this.personService.listPersons());
+		model.addAttribute("listNationalities",
+				this.nationalityService.listNationalities());
+
 		return "person";
 	}
 
 	// For add and update person both
 	@RequestMapping(value = "/person/add", method = RequestMethod.POST)
-	public String addPerson(@ModelAttribute("person") Person p) {
+	public String addPerson(@ModelAttribute("person") Person p, Model model) {
 
 		if (p.getId() == 0) {
 			// new person, add it
@@ -42,6 +53,9 @@ public class PersonController {
 			// existing person, call update
 			this.personService.updatePerson(p);
 		}
+
+		model.addAttribute("listNationalities",
+				this.nationalityService.listNationalities());
 
 		return "redirect:/persons";
 
@@ -58,6 +72,9 @@ public class PersonController {
 	public String editPerson(@PathVariable("id") int id, Model model) {
 		model.addAttribute("person", this.personService.getPersonById(id));
 		model.addAttribute("listPersons", this.personService.listPersons());
+		model.addAttribute("listNationalities",
+				this.nationalityService.listNationalities());
+
 		return "person";
 	}
 

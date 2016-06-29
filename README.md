@@ -24,7 +24,7 @@ ALTER TABLE Person
 add id_nationality int(11) unsigned; 
 
 ALTER TABLE Person
-ADD FOREIGN KEY (id_nationality) REFERENCES Person(id);
+ADD FOREIGN KEY (id_nationality) REFERENCES Nationality(id);
 
 
 
@@ -34,6 +34,14 @@ http://rogerdudler.github.io/git-guide/
 
 https://www.formget.com/form-validation-using-ajax/
 
-
 https://github.com/spring-projects
+
+http://www.dineshonjava.com/2013/05/spring-crud-example-using-one-to-one.html#.V3I8taLOVLU
+
+http://www.dineshonjava.com/2013/05/spring-crud-example-using-one-to-one.html#
+
+http://howtodoinjava.com/spring/spring-mvc/spring-mvc-populate-and-validate-dropdown-example/
+
+http://howtodoinjava.com/spring/spring-mvc/spring-bean-validation-example-with-jsr-303-annotations/
+
 

@@ -74,6 +74,19 @@
 					</form:label></td>
 				<td><form:input path="country" /></td>
 			</tr>
+
+			<tr>
+				<td><form:label path="nationality">
+						<spring:message text="Nationality" />
+					</form:label></td>
+				<td><form:select path="nationality.id">
+						<!-- <option value="-1">Select a type</option> -->
+						<c:forEach items="${listNationalities}" var="nationality">
+							<option value="${nationality.id}">${nationality.name}</option>
+						</c:forEach>
+					</form:select></td>
+			</tr>
+
 			<tr>
 				<td colspan="2"><c:if test="${!empty person.name}">
 						<input type="submit" value="<spring:message text="Edit Person"/>" />
@@ -81,6 +94,7 @@
 						<input type="submit" value="<spring:message text="Add Person"/>" />
 					</c:if></td>
 			</tr>
+
 		</table>
 	</form:form>
 
@@ -98,6 +112,7 @@
 				<th width="80">Person ID</th>
 				<th width="120">Person Name</th>
 				<th width="120">Person Country</th>
+				<th width="120">Nationality</th>
 				<th width="60">Edit</th>
 				<th width="60">Delete</th>
 			</tr>
@@ -106,6 +121,7 @@
 					<td>${person.id}</td>
 					<td>${person.name}</td>
 					<td>${person.country}</td>
+					<td>${person.nationality.name}</td>
 					<td><a href="<c:url value='/edit/${person.id}' />">Edit</a></td>
 					<td><a href="<c:url value='/remove/${person.id}' />">Delete</a></td>
 				</tr>
