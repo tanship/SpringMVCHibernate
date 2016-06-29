@@ -45,4 +45,6 @@ http://howtodoinjava.com/spring/spring-mvc/spring-mvc-populate-and-validate-drop
 
 http://howtodoinjava.com/spring/spring-mvc/spring-bean-validation-example-with-jsr-303-annotations/
 
+http://stackoverflow.com/questions/6181277/how-do-i-set-the-selected-value-in-a-spring-mvc-formselect-from-the-controller
+
 

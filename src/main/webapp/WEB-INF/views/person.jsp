@@ -80,9 +80,11 @@
 						<spring:message text="Nationality" />
 					</form:label></td>
 				<td><form:select path="nationality.id">
-						<!-- <option value="-1">Select a type</option> -->
-						<c:forEach items="${listNationalities}" var="nationality">
-							<option value="${nationality.id}">${nationality.name}</option>
+						<option value="-1">Select a type</option>
+						<c:forEach items="${listNationalities}" var="nationalityItem">
+							<option
+								<c:if test="${nationalityItem.id eq person.nationality.id}">selected='selected'</c:if>
+								value="${nationalityItem.id}">${nationalityItem.name}</option>
 						</c:forEach>
 					</form:select></td>
 			</tr>
