@@ -26,7 +26,8 @@ add id_nationality int(11) unsigned;
 ALTER TABLE Person
 ADD FOREIGN KEY (id_nationality) REFERENCES Nationality(id);
 
-
+ALTER TABLE Person
+DROP FOREIGN KEY person_ibfk_1;
 
 
 useful links:
